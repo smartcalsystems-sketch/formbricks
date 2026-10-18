@@ -92,7 +92,19 @@ to this provider that you must set, and it has to be a valid HTTP(S) URL.
   `http://vllm:8000/v1` on the internal Compose network.
 </Warning>
 
+#### Example: Third-party OpenAI-compatible router (e.g. DemonRoute)
+
+Any external provider or inference router exposing an OpenAI-compatible `/v1` endpoint can be connected directly. For example, to configure DemonRoute (a zero-logging router with open-weight model support):
+
+```bash
+AI_PROVIDER=openai-compatible
+AI_MODEL=dolphin-2.9.2-qwen2-72b  # or your desired model identifier
+AI_OPENAI_COMPATIBLE_BASE_URL=https://api.demonroute.com/v1
+AI_OPENAI_COMPATIBLE_API_KEY=your-demonroute-api-key
+```
+
 ### Behind an OAuth2 gateway
+
 
 Some gateways in front of a model do not accept a static API key. They issue short-lived access tokens through the
 OAuth2 client-credentials flow instead: Formbricks exchanges a client ID and secret for a token at the gateway's
